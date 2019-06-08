@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PerfilComponent } from './perfil/perfil.component';
+import { DashbordComponent } from './dashbord/dashbord.component';
 @NgModule({
-  declarations: [],
+  declarations: [PerfilComponent, DashbordComponent],
   imports: [
     CommonModule
   ]
