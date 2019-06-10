@@ -6,6 +6,9 @@ import { ContentComponent } from './content/content.component';
 import { DashbordComponent } from './content/dashbord/dashbord.component';
 import { LoginComponent } from './login/login.component';
 
+import { ROUTES } from './app.routes'
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +17,8 @@ import { LoginComponent } from './login/login.component';
     LoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]
