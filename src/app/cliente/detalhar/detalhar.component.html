@@ -1,0 +1,57 @@
+<div class='row'>
+  <div class='col-md-12'>
+    <div class='card'>
+      <div class='card-header card-header-primary'>
+        <h4 class='card-title'>Detalhar</h4>
+        <p class='card-category'>Cliente</p>
+      </div>
+      <div class='card-body'>
+        <div class='box-body'>
+          <div class='row'>
+            <div class='col-md-2'>
+              <div class="uploadArquivo" [style.background-image]="'url(' + img + ' )' | safeHtml: 'style' "></div>
+            </div>
+            <div class='col-md-10'>
+              <div class="row">
+                <div class='form-group is-empty col-md-4 detalharLeft'>
+                  <label for='nome'>Nome</label>
+                  <p>{{cliente?.nome}}</p>
+                </div>
+                <div class='form-group is-empty col-md-4 detalharLeft'>
+                  <label for='cpf'>CPF</label>
+                  <p>{{cliente?.cpf}}</p>
+                </div>
+                <div class='form-group is-empty col-md-4 detalharLeft'>
+                  <label for='telefone'>Telefone</label>
+                  <p>{{cliente?.telefone}}</p>
+                </div>
+                <div class='form-group is-empty col-md-4 detalharLeft'>
+                  <label for='email'>Email</label>
+                  <p>{{cliente?.email}}</p>
+                </div>
+                <div class='form-group is-empty col-md-4 detalharLeft'>
+                  <label for='pessoa_referencia'>Referência</label>
+                  <p>{{cliente?.referencia}}</p>
+                </div>
+
+                <div class='form-group is-empty col-md-4 detalharLeft'>
+                  <label for='dt_nascimento'>Data de nascimento</label>
+                  <p>{{cliente?.dt_nascimento}}</p>
+                </div>
+                <div class='form-group is-empty col-md-4 detalharLeft'>
+                  <label for='telefone'>Ativo/Inativo</label>
+                  <p [class.ativoLeft]="cliente?.bo_ativo" [class.inativoLeft]="!cliente?.bo_ativo">{{cliente?.bo_ativo |
+                    BooleanMessage :'boativo' }}</p>
+                </div>
+                <div class='form-group is-empty col-md-4 detalharLeft'>
+                  <label for='endereco'>Endereço</label>
+                  <p>{{cliente?.endereco}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='col-md-2'></div>
+  </div>

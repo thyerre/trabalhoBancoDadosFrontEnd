@@ -1,0 +1,83 @@
+<div class='row'>
+    <div class='col-md-2'></div>
+    <div class='col-md-12'>
+        <div class='card'>
+            <div class='card-header card-header-primary'>
+                <h4 class='card-title'>Adicionar</h4>
+                <p class='card-category'>Cliente</p>
+            </div>
+            <div class='card-body'>
+                <form [formGroup]='form' novalidate>
+                    <div class='box-body'>
+                        <div class='row'>
+                            <div class='col-md-2'>
+                                <div class='col-md-4'>
+                                    <input style="display: none" type="file" (change)="onFileChanged($event)"
+                                        #fileInput formControlName='fileimg'>
+                                    <div class="uploadArquivo" [style.background-image]="'url(' + img + ' )' | safeHtml: 'style' "></div>
+                                    <button class="btn" (click)="fileInput.click()" style="width: 100px;height: 50px !important">Imagem
+                                        </button>
+                                </div>
+                            </div>
+                            <div class='col-md-10'>
+                                <div class="row">
+                                    <div class='form-group is-empty col-md-4'>
+                                        <label for='nome'>Nome</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='Nome'>
+                                            <input class='form-control' formControlName='nome' placeholder=''>
+                                        </app-input-container>
+                                    </div>
+                                    <div class='form-group is-empty col-md-4'>
+                                        <label for='cpf'>CPF</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='cpf'>
+                                            <input class='form-control' formControlName='cpf' placeholder=''>
+                                        </app-input-container>
+                                    </div>
+                                    <div class='form-group is-empty col-md-4'>
+                                        <label for='telefone'>Telefone</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='telefone'>
+                                            <input class='form-control' formControlName='telefone' placeholder=''>
+                                        </app-input-container>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='form-group is-empty col-md-4'>
+                                        <label for='dt_nascimento'>Data de Nascimento</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='dt_nascimento'>
+                                            <input class='form-control' formControlName='dt_nascimento' placeholder=''>
+                                        </app-input-container>
+                                    </div>
+                                    <div class='form-group is-empty col-md-4'>
+                                        <label for='email'>Email</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='email'>
+                                            <input class='form-control' formControlName='email' placeholder=''>
+                                        </app-input-container>
+                                    </div>
+                                    <div class='form-group is-empty col-md-4'>
+                                        <label for='pessoa_referencia'>Referência</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='pessoa_referencia'>
+                                            <input class='form-control' formControlName='pessoa_referencia' placeholder=''>
+                                        </app-input-container>
+                                    </div>
+                                    <div class='form-group is-empty col-md-12'>
+                                        <label for='endereco'>Endereço</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='endereco'>
+                                            <textarea rows="5" class='form-control' formControlName='endereco' placeholder=''></textarea>
+                                        </app-input-container>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class='box-footer'>
+                        <button (click)='save(form.value)' [disabled]='!form.valid' class='btn btn-primary'>Salvar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div class='col-md-2'></div>
+    </div>

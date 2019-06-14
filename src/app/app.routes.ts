@@ -1,14 +1,13 @@
 import { Routes } from '@angular/router'
 
-import { LoginComponent } from './login/login.component';
-import { DashbordComponent } from './content/dashbord/dashbord.component';
-// import {LoggedInGuard} from './security/loggedin.guard'
+import { LoginComponent } from './security/login/login.component';
+import { ClienteComponent } from './cliente/cliente.component';
 
 export const ROUTES: Routes = [
     // { path: '', component: HomeComponent ,canLoad:[LoggedInGuard]},
+    { path: 'login/:to', component: LoginComponent},
     { path: 'login', component: LoginComponent},
-    { path: '', component: DashbordComponent}
-    // { path: 'login', component: LoginComponent},
+    { path: 'cliente', component: ClienteComponent},
     // { path: '', loadChildren: './layout/home/home.module#HomeModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'cliente', loadChildren: './cliente/cliente.module#ClienteModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'cliente/incluir', loadChildren: './cliente/incluir/incluir.module#IncluirModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]}, 
@@ -32,8 +31,8 @@ export const ROUTES: Routes = [
     // { path: 'user', loadChildren: './user/user.module#UserModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'user/incluir', loadChildren: './user/incluir/incluir.module#IncluirModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'user/alterar/:id', loadChildren: './user/alterar/alterar.module#AlterarModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
-
-
+// 
+// 
     // { path: 'suporte', loadChildren: './suporte/suporte.module#SuporteModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'suporte/incluir', loadChildren: './suporte/incluir/incluir.module#IncluirModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'suporte/alterar/:id', loadChildren: './suporte/alterar/alterar.module#AlterarModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
@@ -50,9 +49,9 @@ export const ROUTES: Routes = [
     // { path: 'porque', loadChildren: './porque/porque.module#PorqueModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'porque/incluir', loadChildren: './porque/incluir/incluir.module#IncluirModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]}, 
     // { path: 'porque/alterar/:id', loadChildren: './porque/alterar/alterar.module#AlterarModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]}, 
-
+// 
     // { path: 'settings', loadChildren: './settings/settings.module#SettingsModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]}, 
-    
+    // 
     // { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' ,canLoad:[LoggedInGuard]},
     // { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
 ]

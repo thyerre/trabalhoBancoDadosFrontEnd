@@ -1,0 +1,101 @@
+<div class='row'>
+    <div class='col-md-12'>
+        <div class='card'>
+            <div class='card-header card-header-primary'>
+                <h4 class='card-title'>Editar</h4>
+                <p class='card-category'>Produto</p>
+            </div>
+            <div class='card-body'>
+                <form [formGroup]='form' novalidate>
+                    <div class='box-body'>
+                        <div class='row'>
+                            <input type='hidden' class='form-control' formControlName='id' placeholder=''>
+                            <div class='col-md-2'>
+                                <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput
+                                    formControlName='fileimg'>
+                                <div class="uploadArquivo" [style.background-image]="'url(' + img + ' )' | safeHtml: 'style' "></div>
+                                <button class="btn" (click)="fileInput.click()" style="width: 100px">Imagem</button>
+                            </div>
+                            <div class='col-md-10'>
+                                <div class="row">
+                                    <div class='form-group is-empty col-md-4'>
+                                        <label for='ds_produto'>Descrição</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='ds_produto'>
+                                            <input class='form-control' formControlName='ds_produto' placeholder=''>
+                                        </app-input-container>
+                                    </div>
+                                    <div class='form-group is-empty col-md-2'>
+                                        <label for='nu_referencia'>Refêrencia</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='nu_referencia'>
+                                            <input class='form-control' formControlName='nu_referencia' placeholder=''>
+                                        </app-input-container>
+                                    </div>
+                                    <div class='form-group is-empty col-md-4'>
+                                        <label for='cores'>Cores</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='cores'>
+                                            <input class='form-control' formControlName='cores'>
+                                        </app-input-container>
+                                    </div>
+                                    <div class='form-group is-empty col-md-2'>
+                                            <label for='bo_ativo'>Ativo/Inativo</label>
+                                            <app-input-container errorMessage='Campo obrigatório' label='bo_ativo'>
+                                                <div class="onoffswitch">
+                                                    <input type="checkbox" formControlName='bo_ativo' class="onoffswitch-checkbox"
+                                                        id="myonoffswitch" checked>
+                                                    <label class="onoffswitch-label" for="myonoffswitch"></label>
+                                                </div>
+                                            </app-input-container>
+                                        </div>
+                                    <div class='form-group is-empty col-md-3'>
+                                        <label for='vl_custo'>Valor de Custo</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='vl_custo'>
+                                            <input class='form-control' formControlName='vl_custo' currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',',align:'left' }">
+                                        </app-input-container>
+                                    </div>
+
+                                    <div class='form-group is-empty col-md-3'>
+                                        <label for='vl_venda'>Valor de Venda</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='vl_venda'>
+                                            <input class='form-control' formControlName='vl_venda' currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',',align:'left' }">
+                                        </app-input-container>
+                                    </div>
+                                    <div class='form-group is-empty col-md-6'>
+                                        <label for='fornecedor'>Fornecedor</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='fornecedor'>
+                                            <input class='form-control' formControlName='fornecedor'>
+                                        </app-input-container>
+                                    </div>
+
+                                    <div class='form-group is-empty col-md-9'>
+                                        <label for='fabricante'>fabricante</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='fabricante'>
+                                            <input class='form-control' formControlName='fabricante'>
+                                        </app-input-container>
+                                    </div>
+                                    <div class='form-group is-empty col-md-3'>
+                                        <label for='dt_lancamento'>Ano de lançamento</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='dt_lancamento'>
+                                            <input class='form-control' formControlName='dt_lancamento'>
+                                        </app-input-container>
+                                    </div>
+                                    <div class='form-group is-empty col-md-12'>
+                                        <label for='observacao'>Observação</label>
+                                        <app-input-container errorMessage='Campo obrigatório' label='observacao'>
+                                            <textarea rows="5" class='form-control' formControlName='observacao'
+                                                placeholder=''></textarea>
+                                        </app-input-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class='box-footer'>
+                        <button (click)='update(form.value)' [disabled]='!form.valid' class='btn btn-primary'>Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class='col-md-2'></div>
+    </div>

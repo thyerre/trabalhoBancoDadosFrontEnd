@@ -1,0 +1,80 @@
+<div class='container-fluid'>
+<div class='row'>
+  <div class='col-md-12'>
+    <div class='card'>
+      <div class='card-header card-header-primary'>
+        <div class="row">
+          <!-- <div class="col-md-2"></div> -->
+          <div class="col-md-4">
+            <h4 class='card-title '>Saida </h4>
+            <p class='card-category'> Para alterar, detalhar ou excluir basta clicar nos icones ao lado</p>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-6">
+            <form class="navbar-form" [formGroup]='searchForm' novalidate>
+              <span class="seachSpan">Nome/CPF/Telefone</span>
+              <div class="input-group no-border formSearchColor">
+                <app-input-container errorMessage='Campo obrigatório' label='search'>
+                  <input type='text' class='form-control formSearchColor inputSeach' formControlName='search' placeholder=''>
+                </app-input-container>
+                <!-- <input type="text" value="" class="form-control" #seach> -->
+                <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)='search(searchForm.value)'
+                  title="Pesquisar">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+                <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)='clearSearch()' title="Limpar pesquisa">
+                  <i class="material-icons">remove_circle_outline</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+        <div class='add' routerLink='/saida/incluir'> <i class='material-icons add-icon' style='font-size:5em'>
+            add_circle </i> </div>
+      </div>
+
+      <div class='card-body'>
+        <div class='table-responsive'>
+          <table class='table'>
+            <thead class=' text-primary'>
+              <tr>
+                <th><b>N°</b></th>
+                <th><b>Cliente</b></th>
+                <th><b>CPF</b></th>
+                <th><b>Valor</b></th>
+                <th><b>Data da venda</b></th>
+                <th><b>Ativo/Inativo</b></th>
+                <th width='90'><b>Opções</b></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <pre>{{saidas | json}}</pre> -->
+              <tr *ngFor='let saida of saidas '>
+                <td> {{saida?.id_saida}}</td>
+                <td> {{saida?.nome}}</td>
+                <td> {{saida?.cpf}}</td>
+                <td>{{saida?.total_saida | currency:'BRL' }}</td>
+                <td>{{saida?.dt_saida | date: 'dd/MM/yyyy'}}</td>
+                <td>
+                  <span [class.ativo]="saida.bo_ativo" [class.inativo]="!saida.bo_ativo"> {{saida?.bo_ativo |
+                    BooleanMessage :'boativo' }}</span>
+                </td>
+                <td>
+                  <i style='padding-right: 5px;cursor: pointer' class='fa fa-search' aria-hidden='true' routerLink='/saida/detalhar/{{saida?.id_saida}}'></i>
+                  <!-- <i style='padding-right: 5px;cursor: pointer' class='fa fa-pencil-square-o' aria-hidden='true'
+                    routerLink='/saida/alterar/{{saida?.id_saida}}'></i> -->
+                  <i style='padding-right: 5px;cursor: pointer' class='fa fa-minus-square' aria-hidden='true' (click)='InativarSaida(saida)'></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf='loader' class='loader'></div>

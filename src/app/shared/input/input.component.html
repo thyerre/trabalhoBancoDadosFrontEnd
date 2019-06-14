@@ -1,0 +1,7 @@
+<div class="form-group has-feedback" [class.has-success]="hasSuccess()" [class.has-warning]="hasError()" style="margin-top: 5px;">
+    <ng-content></ng-content>
+      <label *ngIf="hasError()" class="control-label control-error" for="inputSuccess">
+        <!-- <span *ngIf="showTip && hasSuccess()"><i class="fa fa-check"></i>Ok</span> -->
+        <span *ngIf="showTip && hasError()"><i class="fa fa-remove"></i> {{errorMessage}}</span>
+      </label>
+  </div>  

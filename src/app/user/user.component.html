@@ -1,0 +1,82 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='card'>
+        <div class='card-header card-header-primary'>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+              <h4 class='card-title '>Usuários </h4>
+              <p class='card-category'> Para alterar basta mudar os valores na linhas</p>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+              <form class="navbar-form" [formGroup]='searchForm' novalidate>
+                <span>Nome/CPF/Telefone</span>
+                <div class="input-group no-border formSearchColor">
+                  <app-input-container errorMessage='Campo obrigatório' label='Nome'>
+                    <input type='text' class='form-control formSearchColor' formControlName='search' placeholder=''>
+                  </app-input-container>
+                  <!-- <input type="text" value="" class="form-control" #seach> -->
+                  <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)='search(searchForm.value)' title="Pesquisar">
+                    <i class="material-icons">search</i>
+                    <div class="ripple-container"></div>
+                  </button>
+                  <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)='clearSearch()' title="Limpar pesquisa">
+                    <i class="material-icons">remove_circle_outline</i>
+                    <div class="ripple-container"></div>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class='add' routerLink='/user/incluir'> <i class='material-icons add-icon' style='font-size:5em'>
+              add_circle </i> </div>
+
+        </div>
+        <div class='card-body'>
+          <div class='table-responsive'>
+            <table class='table'>
+              <thead class=' text-primary'>
+                <tr>
+                  <th><b>Imagem</b></th>
+                  <th><b>Nome</b></th>
+                  <th><b>Email</b></th>
+                  <th><b>CPF</b></th>
+                  <th><b>Telefone</b></th>
+                  <th><b>Cor</b></th>
+                  <th><b>Ativo/Inativo</b></th>
+                  <td width='90'><b>Opções</b></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor='let user of users '>
+                  <td> <img [src]="user.img | imagemTipoArquivo :'show' :'user'" class="img_grid" /> </td>
+                  <td> <input (change)="update(user)" type='text' #nome [(ngModel)]='user.nome' class='inputGrid'
+                      value="{{user?.nome}}"></td>
+                  <td><b>{{user?.email}}</b></td>
+                  <td><b>{{user?.cpf}}</b></td>
+                  <td><b>{{user?.telefone}}</b></td>
+                  <!-- <td><span innerHtml='{{user?.color}}'></span></td> -->
+                  <td><div [style.background-color]="user?.color ? user?.color : '#BEBEBE' " class="colorUser"></div></td>
+                  <td>
+                      <h6 [class.ativo]="user.bo_ativo" [class.inativo]="!user.bo_ativo"> {{user?.bo_ativo |
+                        BooleanMessage :'boativo' }}</h6>
+                  </td>
+                  <td>
+                    <i style='padding-right: 5px;cursor: pointer' class='fa fa-search' aria-hidden='true' routerLink='/user/detalhar/{{user?.id}}'></i>
+                    <i style='padding-right: 5px;cursor: pointer' class='fa fa-pencil-square-o' aria-hidden='true'
+                      routerLink='/user/alterar/{{user?.id}}'></i>
+                    <i style='padding-right: 5px;cursor: pointer' class='fa fa-minus-square' aria-hidden='true' (click)='InativarUser(user)'></i>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf='loader' class='loader'></div>

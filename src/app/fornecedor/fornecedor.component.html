@@ -1,0 +1,51 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='card'>
+        <div class='card-header card-header-primary'>
+          <h4 class='card-title '>Fornecedor </h4>
+          <p class='card-category'> Para alterar basta mudar os valores na linhas</p>
+          <div class='add' routerLink='/fornecedor/incluir'> <i class='material-icons add-icon' style='font-size:5em'>
+              add_circle </i> </div>
+        </div>
+        <div class='card-body'>
+          <div class='table-responsive'>
+            <table class='table'>
+              <thead class=' text-primary'>
+                <tr>
+                  <th><b>Identificação</b></th>
+                  <th><b>Razão social</b></th>
+                  <th><b>CNPJ</b></th>
+                  <th><b>Nome fantasia</b></th>
+                  <th><b>Ativo/Inativo</b></th>
+                  <td width='90'><b>Opções</b></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor='let fornecedor of fornecedors '>
+                  <td>Nº {{fornecedor?.id}}</td>
+                  <td> <input (change)="update(fornecedor)" type='text' #razao_social [(ngModel)]='fornecedor.razao_social'class='inputGrid' value="{{fornecedor?.razao_social}}"></td>
+                  <td> <input (change)="update(fornecedor)" type='text' #cnpj [(ngModel)]='fornecedor.cnpj'class='inputGrid' value="{{fornecedor?.cnpj}}"></td>
+                  <td> <input (change)="update(fornecedor)" type='text' #nome_fantasia [(ngModel)]='fornecedor.nome_fantasia'class='inputGrid' value="{{fornecedor?.nome_fantasia}}"></td>
+                  <td> <h6 [class.ativo]="fornecedor.bo_ativo" [class.inativo]="!fornecedor.bo_ativo"> {{fornecedor?.bo_ativo |
+                      BooleanMessage :'boativo' }}</h6> </td>
+                  <td>
+                    <i style='padding-right: 5px;cursor: pointer' class='fa fa-search' aria-hidden='true' routerLink='/fornecedor/detalhar/{{fornecedor?.id}}'></i>
+                    <i style='padding-right: 5px;cursor: pointer' class='fa fa-pencil-square-o' aria-hidden='true'
+                      routerLink='/fornecedor/alterar/{{fornecedor?.id}}'></i>
+                    <i style='padding-right: 5px;cursor: pointer' class='fa fa-minus-square' aria-hidden='true' (click)='InativarProduto(fornecedor)'></i>
+
+                  </td>
+                </tr>
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf='loader' class='loader'></div>

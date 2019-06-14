@@ -1,2 +1,80 @@
-@import "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic";
+/* You can add global styles to this file, and also import other style files */
 
+/* @import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons";
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"; */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+/* layout */
+.new-section-sm {
+    margin: 5px 0 !important;
+}
+
+
+form {
+    text-align: left !important;
+}
+
+#content-container-login {
+    padding-top: 0px !important;
+}
+
+.bg-img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover
+}
+
+.add {
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    color: #0369bd;
+    cursor: pointer;
+}
+
+.mouse .mouse:hover{
+    cursor: pointer;
+}
+
+
+.add:hover {
+    /* background: #434343; */
+    font-size: 1.1em;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+    transition: all 0.4s ease 0s;
+}
+
+.inputGrid {
+    border: 0;
+    width: 100%;
+    border-bottom-width: 1px;
+    /* border-bottom-style: dashed; */
+    border-color: #f1f1f1;
+    /* border-width: 10% */
+}
+
+.uploadArquivo {
+    width: 100px;
+    height: 150px;
+    background: no-repeat center;
+    background-size: cover;
+}.detalharLeft{
+    text-align: left !important;
+}
+.acaoQuantidade{
+    cursor:pointer;
+    font-weight:bold;
+    font-size:1.5em;
+    margin:10px;
+}
