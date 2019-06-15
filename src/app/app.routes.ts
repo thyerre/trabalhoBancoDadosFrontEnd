@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router'
 
 import { LoginComponent } from './security/login/login.component';
-import { ClienteComponent } from './cliente/cliente.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const ROUTES: Routes = [
     // { path: '', component: HomeComponent ,canLoad:[LoggedInGuard]},
     { path: 'login/:to', component: LoginComponent},
     { path: 'login', component: LoginComponent},
-    { path: 'cliente', component: ClienteComponent},
+    { path: 'dashboard', component: DashboardComponent},
     // { path: '', loadChildren: './layout/home/home.module#HomeModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'cliente', loadChildren: './cliente/cliente.module#ClienteModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'cliente/incluir', loadChildren: './cliente/incluir/incluir.module#IncluirModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]}, 

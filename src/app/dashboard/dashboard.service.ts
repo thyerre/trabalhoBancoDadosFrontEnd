@@ -4,8 +4,6 @@ import {tap,filter} from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http'
 import { Router,NavigationEnd} from '@angular/router'
 
-import { Cliente } from './cliente.model'
-
 
 import { NotificationService } from '../shared/messages/notification.service';
 import { API } from '../app.api'
@@ -14,7 +12,7 @@ import { API } from '../app.api'
   providedIn: 'root'
 })
 
-export class ClienteService {
+export class DashboardService {
 
   constructor(
     private http: HttpClient,
@@ -27,8 +25,8 @@ export class ClienteService {
     return this.http.get <any[]>(`${API}/v1/login`)
   }
 
-  clienteById(id: any): Observable<Cliente> {
-    return this.http.get<Cliente>(`${API}/cliente/${id}`)
+  clienteById(id: any): Observable<any> {
+    return this.http.get<any>(`${API}/cliente/${id}`)
 
   }
   save(form) {

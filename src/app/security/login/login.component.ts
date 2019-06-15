@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup
   navigateTo: string
   img:string = 'assets/img/bg-img/';
+  erro:string
   constructor(private fb: FormBuilder,
     private loginService: LoginService,
     private notificationService: NotificationService,
@@ -23,12 +24,12 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    $("body").addClass("sidebar-collapse");
+    $("header").hide();
     this.loginForm = this.fb.group({
       email: this.fb.control('admin', [Validators.required]),
       password: this.fb.control('123', [Validators.required])
     })
-    $("body").addClass("sidebar-collapse");
-    $("header").remove();
     //btoa é para criptografar com javascript puro
     // this.navigateTo = this.activatedRoute.snapshot.params['to'] || btoa('/')
     // console.log(atob(this.navigateTo));
@@ -37,14 +38,13 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password)
-      .subscribe(user =>
-        response => {
-         
-          
-        },//httpErrorResponse
-        () => {
+      .subscribe(user => {
+        console.log(user)//httpErrorResponse
+          this.erro = user;
+          // if(user.id_login){
+            // }
+
           //atob é para decodificar 
-          this.router.navigate(['/cliente']);
           
           // window.location.replace(atob(this.navigateTo))
           // window.location.reload();

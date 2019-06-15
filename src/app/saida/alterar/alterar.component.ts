@@ -6,8 +6,6 @@ import { SaidaService } from '../saida.service';
 import { Saida } from '../saida.model'
 import { Produto } from './../../produto/produto.model';
 import { ProdutoService } from './../../produto/produto.service';
-import { ClienteService } from './../../cliente/cliente.service'
-import { Cliente } from './../../cliente/cliente.model'
 
 @Component({
   selector: 'app-alterar',
@@ -21,7 +19,7 @@ export class AlterarComponent implements OnInit,AfterViewChecked {
   loader: boolean = true
   option: number = 1;
   produtos: Produto[];
-  clientes: Cliente[];
+  clientes: any[];
   items: Saida[] = []
   idCliente: number
   vl_venda: string = ''
@@ -51,7 +49,7 @@ export class AlterarComponent implements OnInit,AfterViewChecked {
   })
 
 
-  constructor(private router: ActivatedRoute, private produtoService: ProdutoService, private clienteService: ClienteService, private saidaService: SaidaService, private formBuilder: FormBuilder) { }
+  constructor(private router: ActivatedRoute, private produtoService: ProdutoService, private saidaService: SaidaService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.getSaidaById()
@@ -202,9 +200,6 @@ export class AlterarComponent implements OnInit,AfterViewChecked {
   getFormulario() {
     this.produtoService.getProdutos().subscribe(produtos => {
       this.produtos = produtos
-    });
-    this.clienteService.getClientes().subscribe(clientes => {
-      this.clientes = clientes
     });
   }
 }

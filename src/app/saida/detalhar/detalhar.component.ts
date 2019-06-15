@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { SaidaService } from '../saida.service';
 import { Saida } from './../saida.model'
-import { ClienteService } from './../../cliente/cliente.service';
-import { Cliente } from './../../cliente/cliente.model';
 
 @Component({
   selector: 'app-detalhar',
@@ -14,7 +12,7 @@ export class DetalharComponent implements OnInit {
   saida: Saida;
   loader: boolean = true
   option: number = 1;
-  cliente: Cliente;
+  cliente: any;
   saida_produtos: any[] = []
   saida_servicos: any[] = []
   vl_venda: string = ''
@@ -33,7 +31,7 @@ export class DetalharComponent implements OnInit {
   parcelas:any[];
   dt_saida:Date;
 
-  constructor(private saidaService: SaidaService, private router: ActivatedRoute,private clienteService: ClienteService) { }
+  constructor(private saidaService: SaidaService, private router: ActivatedRoute) { }
 
   ngOnInit() {
     this.getSaida();

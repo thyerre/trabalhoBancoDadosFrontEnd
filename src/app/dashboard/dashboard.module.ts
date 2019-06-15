@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core'
 import { SharedModule } from '../shared/shared.module'
 import { RouterModule, Routes } from '@angular/router'
-import { ClienteComponent } from './cliente.component';
+import { DashboardComponent } from './dashboard.component';
 
 const ROUTES: Routes = [
-  { path: '', component: ClienteComponent }
+  { path: '', component: DashboardComponent }
 ];
 @NgModule({
   declarations: [
-    ClienteComponent,
+    DashboardComponent,
   ],
   imports: [
     SharedModule,
     RouterModule.forChild(ROUTES)
   ]
 })
-export class ClienteModule { }
+export class DashboardModule { }

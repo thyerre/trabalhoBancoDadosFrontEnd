@@ -51,8 +51,14 @@ export class LoginService {
         `, { usuario: email, senha: password })
             .pipe(
                 tap(user => {
-                    localStorage.setItem("token",user.token);
-                    console.log(user);
+                    console.log(user[0].id_login);
+                    if(user[0].id_login > 0){
+                        localStorage.setItem("token",user.id_login);
+                        this.router.navigate(['/dashboard']);
+                    }else{
+                        return user;
+                    }
+
                     // localStorage.setItem('user', btoa(JSON.stringify(user.pessoa)));
                     // let userString = JSON.stringify(user.pessoa);
                     // let encrypt = btoa(userString);
@@ -60,7 +66,7 @@ export class LoginService {
                     // let encriptografado = this.helper.encrypt(userString);
                     // console.log(myencrypt);
                     // localStorage.setItem('user', myencrypt);
-                    this.user = user
+                    // this.user = user
                 })
             )
     }

@@ -5,8 +5,6 @@ import { SaidaService } from '../saida.service';
 import { Saida } from '../saida.model'
 import { Produto } from 'src/app/produto/produto.model';
 import { ProdutoService } from 'src/app/produto/produto.service';
-import { ClienteService } from './../../cliente/cliente.service'
-import { Cliente } from './../../cliente/cliente.model'
 @Component({
   selector: 'app-incluir',
   templateUrl: './incluir.component.html',
@@ -19,7 +17,7 @@ export class IncluirComponent implements OnInit {
   loader: boolean = true
   option: number = 1;
   produtos: Produto[];
-  clientes: Cliente[];
+  clientes: any[];
   items: Saida[] = []
   idCliente: number = 1;
   vl_venda: string = ''
@@ -49,7 +47,7 @@ export class IncluirComponent implements OnInit {
   })
 
 
-  constructor(private produtoService: ProdutoService, private clienteService: ClienteService, private saidaService: SaidaService, private formBuilder: FormBuilder) { }
+  constructor(private produtoService: ProdutoService, private saidaService: SaidaService, private formBuilder: FormBuilder) { }
   ngOnInit() {
     this.getFormulario()
     this.initializeFormEmpty();
@@ -198,9 +196,6 @@ export class IncluirComponent implements OnInit {
   getFormulario() {
     this.produtoService.getProdutos().subscribe(produtos => {
       this.produtos = produtos
-    });
-    this.clienteService.getClientes().subscribe(clientes => {
-      this.clientes = clientes
     });
     this.saidaService.getFormasDePagamento().subscribe(formas_pagamento => {
       this.formas_pagamento = formas_pagamento
