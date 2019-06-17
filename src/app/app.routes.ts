@@ -2,12 +2,16 @@ import { Routes } from '@angular/router'
 
 import { LoginComponent } from './security/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { GaragemComponent } from './garagem/garagem.component';
+import { IncluirGaragemComponent } from './garagem/incluir/IncluirGaragem.component';
 
 export const ROUTES: Routes = [
     // { path: '', component: HomeComponent ,canLoad:[LoggedInGuard]},
     { path: 'login/:to', component: LoginComponent},
     { path: 'login', component: LoginComponent},
     { path: 'dashboard', component: DashboardComponent},
+    { path: 'garagem', component: GaragemComponent},
+    { path: 'garagem/incluir', component: IncluirGaragemComponent},
     // { path: '', loadChildren: './layout/home/home.module#HomeModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'cliente', loadChildren: './cliente/cliente.module#ClienteModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'cliente/incluir', loadChildren: './cliente/incluir/incluir.module#IncluirModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]}, 

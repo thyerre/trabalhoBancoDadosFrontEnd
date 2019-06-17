@@ -16,11 +16,16 @@ import { ApplicationErrorHandler } from './app.error-handler';
 import { ErrorHandler } from '@angular/core';
 import { LoginComponent } from './security/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { GaragemComponent } from './garagem/garagem.component';
+import { IncluirGaragemComponent } from './garagem/incluir/IncluirGaragem.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     LoginComponent,
+    GaragemComponent,
+    IncluirGaragemComponent
 
   ],
   imports: [

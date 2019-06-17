@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-import { FornecedorService } from '../fornecedor.service';
-import { Fornecedor } from './../fornecedor.model'
+import { GaragemService } from '../garagem.service';
 import { API_PATH_IMG } from './../../app.api'
 @Component({
   selector: 'app-detalhar',
@@ -9,16 +8,16 @@ import { API_PATH_IMG } from './../../app.api'
   styleUrls: ['./detalhar.component.css']
 })
 export class DetalharComponent implements OnInit {
-  fornecedor: Fornecedor;
+  fornecedor: any;
   loader: boolean = true
 
-  constructor(private fornecedorService: FornecedorService, private router: ActivatedRoute) { }
+  constructor(private garagemService: GaragemService, private router: ActivatedRoute) { }
 
   ngOnInit() {
     this.getCliente();
   }
   getCliente() {
-    this.fornecedorService.produtoById(this.router.snapshot.params['id']).subscribe(fornecedor => {
+    this.garagemService.produtoById(this.router.snapshot.params['id']).subscribe(fornecedor => {
       this.fornecedor = fornecedor
       
       this.loader = false

@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { FornecedorService } from '../fornecedor.service';
-import { Fornecedor } from '../fornecedor.model'
+import { GaragemService } from '../garagem.service';
 
 @Component({
-  selector: 'app-incluir',
-  templateUrl: './incluir.component.html',
-  styleUrls: ['./incluir.component.css']
+  selector: 'app-IncluirGaragem',
+  templateUrl: './IncluirGaragem.component.html',
+  styleUrls: ['./IncluirGaragem.component.css']
 })
-export class IncluirComponent implements OnInit {
-  fornecedor: Fornecedor;
+export class IncluirGaragemComponent implements OnInit {
+  fornecedor: any;
   form: FormGroup
   loader: boolean = true
 
 
-  constructor(private fornecedorService: FornecedorService, private formBuilder: FormBuilder) { }
+  constructor(private garagemService: GaragemService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.initializeFormEmpty();
@@ -36,10 +35,10 @@ export class IncluirComponent implements OnInit {
   }
 
   save(form) {
-    this.fornecedorService.save(form)
+    this.garagemService.save(form)
       .subscribe(data => {
-        this.fornecedorService.notify(data.response);
-        this.fornecedorService.goTo()
+        this.garagemService.notify(data.response);
+        this.garagemService.goTo()
 
       });
   }

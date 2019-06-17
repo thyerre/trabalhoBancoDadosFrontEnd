@@ -4,8 +4,6 @@ import {tap,filter} from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http'
 import { Router,NavigationEnd} from '@angular/router'
 
-import { Fornecedor } from './fornecedor.model'
-
 
 import { NotificationService } from '../shared/messages/notification.service';
 import { API } from '../app.api'
@@ -14,7 +12,7 @@ import { API } from '../app.api'
   providedIn: 'root'
 })
 
-export class FornecedorService {
+export class GaragemService {
 
   constructor(
     private http: HttpClient,
@@ -22,17 +20,17 @@ export class FornecedorService {
     private router: Router
   ) { }
 
-  getProdutos(search?: string): Observable<Fornecedor[]> {
+  getProdutos(search?: string): Observable<any[]> {
     
-    return this.http.get <Fornecedor[]>(`${API}/fornecedor`)
+    return this.http.get <any[]>(`${API}/garagem`)
   }
 
-  produtoById(id: string): Observable<Fornecedor> {
-    return this.http.get<Fornecedor>(`${API}/fornecedor/${id}`)
+  produtoById(id: string): Observable<any> {
+    return this.http.get<any>(`${API}/geragem/${id}`)
 
   }
   save(form) {
-    return this.http.post<any>(`${API}/fornecedor`, form)
+    return this.http.post<any>(`${API}/geragem`, form)
     .pipe(
       tap(user => {
 
@@ -41,17 +39,17 @@ export class FornecedorService {
   }
   update(form,id) {
     console.log(form)
-    return this.http.put(`${API}/fornecedor/${id}`, form)
+    return this.http.put(`${API}/geragem/${id}`, form)
     .pipe(
       tap(user => {
       })
     )
   }
   inativar(id: string) {
-    return this.http.delete(`${API}/fornecedor/${id}`)
+    return this.http.delete(`${API}/geragem/${id}`)
 
   }
-  goTo(path: string = "fornecedor") {
+  goTo(path: string = "geragem") {
     this.router.navigate([`/${path}`])
   }
   notify(msg) {

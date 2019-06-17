@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router'
-import { FornecedorService } from '../fornecedor.service';
-import { Fornecedor } from '../fornecedor.model'
+import { GaragemService } from '../garagem.service';
 import { API_PATH_IMG } from './../../app.api'
 
 @Component({
@@ -11,20 +10,20 @@ import { API_PATH_IMG } from './../../app.api'
   styleUrls: ['./alterar.component.css']
 })
 export class AlterarComponent implements OnInit {
-  fornecedor: Fornecedor;
+  fornecedor: any;
   form: FormGroup;
   img: string = 'assets/img/user/padrao.png';
   loader: boolean = true;
   selectedFile: File
 
-  constructor(private fornecedorService: FornecedorService, private formBuilder: FormBuilder, private router: ActivatedRoute) { }
+  constructor(private garagemService: GaragemService, private formBuilder: FormBuilder, private router: ActivatedRoute) { }
 
   ngOnInit() {
     this.initializeFormEmpty();
     this.getFornecedor();
   }
   getFornecedor() {
-    this.fornecedorService.produtoById(this.router.snapshot.params['id']).subscribe(fornecedor => {
+    this.garagemService.produtoById(this.router.snapshot.params['id']).subscribe(fornecedor => {
       this.fornecedor = fornecedor
       this.initializeForm(this.fornecedor)
       this.loader = false
@@ -63,10 +62,10 @@ export class AlterarComponent implements OnInit {
   
 
   update(form) {
-    this.fornecedorService.update(form, form.id)
+    this.garagemService.update(form, form.id)
       .subscribe(data => {
-        this.fornecedorService.notify(data['response']);
-        this.fornecedorService.goTo()
+        this.garagemService.notify(data['response']);
+        this.garagemService.goTo()
       });
     }
 }
