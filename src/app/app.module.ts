@@ -22,6 +22,8 @@ import { AlterarGaragemComponent } from './garagem/alterar/alterarGaragem.compon
 import { DetalharGaragemComponent } from './garagem/detalhar/detalharGaragem.component';
 import { VagaComponent } from './vaga/vaga.component';
 import { IncluirVagaComponent } from './vaga/incluir/IncluirVaga.component';
+import { DetalharVagaComponent } from './vaga/detalhar/detalharVaga.component';
+import { AlterarVagaComponent } from './vaga/alterar/alterarVaga.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { IncluirVagaComponent } from './vaga/incluir/IncluirVaga.component';
     IncluirGaragemComponent,
     AlterarGaragemComponent,
     DetalharGaragemComponent,
-
+    AlterarVagaComponent,
+    DetalharVagaComponent,
     VagaComponent,
     IncluirVagaComponent
 

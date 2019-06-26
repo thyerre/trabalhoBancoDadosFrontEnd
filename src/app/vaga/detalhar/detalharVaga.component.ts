@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VagaService } from '../vaga.service';
-import { API_PATH_IMG } from './../../app.api';
+import { API_PATH_IMG } from '../../app.api';
 @Component({
   selector: 'app-detalhar',
-  templateUrl: './detalhar.component.html',
-  styleUrls: ['./detalhar.component.css']
+  templateUrl: './detalharVaga.component.html',
+  styleUrls: ['./detalharVaga.component.css']
 })
-export class DetalharComponent implements OnInit {
+export class DetalharVagaComponent implements OnInit {
   fornecedor: any;
   loader: true;
 

@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   constructor(private loginService:LoginService,private router:Router){}
   
   ngOnInit(){
-    this.router.navigate(['/login']);
+    // this.router.navigate(['/login']);
     this.loginService.mostrarMenu.subscribe(
       mostrarMenu => this.mostrarMenu = mostrarMenu
     );

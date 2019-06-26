@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { VagaService } from '../vaga.service';
-import { API_PATH_IMG } from './../../app.api';
+import { API_PATH_IMG } from '../../app.api';
 
 @Component({
   selector: 'app-alterar',
-  templateUrl: './alterar.component.html',
-  styleUrls: ['./alterar.component.css']
+  templateUrl: './alterarVaga.component.html',
+  styleUrls: ['./alterarVaga.component.css']
 })
-export class AlterarComponent implements OnInit {
+export class AlterarVagaComponent implements OnInit {
   fornecedor: any;
   form: FormGroup;
   img: 'assets/img/user/padrao.png';

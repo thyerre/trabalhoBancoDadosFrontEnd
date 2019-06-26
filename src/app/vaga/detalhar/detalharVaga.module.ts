@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { DetalharComponent } from './detalhar.component';
+import { DetalharVagaComponent } from './detalharVaga.component';
 
 const ROUTES: Routes = [
-  { path: '', component: DetalharComponent }
+  { path: '', component: DetalharVagaComponent }
 ];
 @NgModule({
   declarations: [
-    DetalharComponent
+    DetalharVagaComponent
   ],
   imports: [
     SharedModule,
     RouterModule.forChild(ROUTES)
   ]
 })
-export class DetalharModule { }
+export class DetalharVagaModule { }
