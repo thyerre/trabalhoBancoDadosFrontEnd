@@ -8,13 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  texto: string = 'Wenceslau Braz - Cuidado com as cargas';
+  lat: number = -23.8779431;
+  lng: number = -49.8046873;
+  zoom: number = 15;
+
   isLogged = false;
-  
-  mostrarMenu: boolean = false;
-  constructor(private loginService:LoginService,private router:Router){}
-  
-  ngOnInit(){
-    // this.router.navigate(['/login']);
+  mostrarMenu: false;
+  constructor(private loginService: LoginService, private router: Router) {}
+  ngOnInit() {
+    //this.router.navigate(['/login']);
     this.loginService.mostrarMenu.subscribe(
       mostrarMenu => this.mostrarMenu = mostrarMenu
     );

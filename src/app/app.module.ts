@@ -25,6 +25,8 @@ import { IncluirVagaComponent } from './vaga/incluir/IncluirVaga.component';
 import { DetalharVagaComponent } from './vaga/detalhar/detalharVaga.component';
 import { AlterarVagaComponent } from './vaga/alterar/alterarVaga.component';
 
+import { AgmCoreModule } from '@agm/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,8 +47,11 @@ import { AlterarVagaComponent } from './vaga/alterar/alterarVaga.component';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule.forRoot(),
-    RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }),
     // RouterModule.forRoot(ROUTES)
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDPg1--2GhzyY2vYpmQAUBSZuJNAStgFD8'
+    })
   ],
   providers: [{provide: ErrorHandler, useClass: ApplicationErrorHandler}],
   bootstrap: [AppComponent]
