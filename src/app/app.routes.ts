@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router'
+import { Routes } from '@angular/router';
 
 import { LoginComponent } from './security/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -6,8 +6,11 @@ import { GaragemComponent } from './garagem/garagem.component';
 import { IncluirGaragemComponent } from './garagem/incluir/IncluirGaragem.component';
 import {AlterarGaragemComponent } from './garagem/alterar/alterarGaragem.component';
 import {DetalharGaragemComponent } from './garagem/detalhar/detalharGaragem.component';
+import { VagaComponent } from './vaga/vaga.component';
+import { IncluirVagaComponent } from './vaga/incluir/IncluirVaga.component';
+
 export const ROUTES: Routes = [
-    // { path: '', component: HomeComponent ,canLoad:[LoggedInGuard]},
+
     { path: 'login/:to', component: LoginComponent},
     { path: 'login', component: LoginComponent},
     { path: 'dashboard', component: DashboardComponent},
@@ -61,4 +64,6 @@ export const ROUTES: Routes = [
     // 
     // { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' ,canLoad:[LoggedInGuard]},
     // { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
+    { path: 'vaga', component: VagaComponent},
+    { path: 'vaga/incluir', component: IncluirVagaComponent},
 ]
