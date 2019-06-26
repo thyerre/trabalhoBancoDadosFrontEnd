@@ -23,6 +23,8 @@ import { DetalharGaragemComponent } from './garagem/detalhar/detalharGaragem.com
 import { VagaComponent } from './vaga/vaga.component';
 import { IncluirVagaComponent } from './vaga/incluir/IncluirVaga.component';
 
+import { AgmCoreModule } from '@agm/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,8 +44,11 @@ import { IncluirVagaComponent } from './vaga/incluir/IncluirVaga.component';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule.forRoot(),
-    RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }),
     // RouterModule.forRoot(ROUTES)
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDPg1--2GhzyY2vYpmQAUBSZuJNAStgFD8'
+    })
   ],
   providers: [{provide: ErrorHandler, useClass: ApplicationErrorHandler}],
   bootstrap: [AppComponent]
