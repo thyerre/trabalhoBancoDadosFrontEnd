@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ROUTES } from './app.routes'
+import { ROUTES } from './app.routes';
 
 import { SharedModule } from './shared/shared.module';
 
@@ -18,6 +18,8 @@ import { LoginComponent } from './security/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GaragemComponent } from './garagem/garagem.component';
 import { IncluirGaragemComponent } from './garagem/incluir/IncluirGaragem.component';
+import { VagaComponent } from './vaga/vaga.component';
+import { IncluirVagaComponent } from './vaga/incluir/IncluirVaga.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { IncluirGaragemComponent } from './garagem/incluir/IncluirGaragem.compon
     DashboardComponent,
     LoginComponent,
     GaragemComponent,
-    IncluirGaragemComponent
+    IncluirGaragemComponent,
+    VagaComponent,
+    IncluirVagaComponent
 
   ],
   imports: [
@@ -35,9 +39,8 @@ import { IncluirGaragemComponent } from './garagem/incluir/IncluirGaragem.compon
     SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
     // RouterModule.forRoot(ROUTES)
-    
   ],
-  providers: [{provide: ErrorHandler,useClass:ApplicationErrorHandler}],
+  providers: [{provide: ErrorHandler, useClass: ApplicationErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
