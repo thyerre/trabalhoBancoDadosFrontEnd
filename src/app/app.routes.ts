@@ -4,7 +4,8 @@ import { LoginComponent } from './security/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GaragemComponent } from './garagem/garagem.component';
 import { IncluirGaragemComponent } from './garagem/incluir/IncluirGaragem.component';
-
+import {AlterarGaragemComponent } from './garagem/alterar/alterarGaragem.component';
+import {DetalharGaragemComponent } from './garagem/detalhar/detalharGaragem.component';
 export const ROUTES: Routes = [
     // { path: '', component: HomeComponent ,canLoad:[LoggedInGuard]},
     { path: 'login/:to', component: LoginComponent},
@@ -12,6 +13,8 @@ export const ROUTES: Routes = [
     { path: 'dashboard', component: DashboardComponent},
     { path: 'garagem', component: GaragemComponent},
     { path: 'garagem/incluir', component: IncluirGaragemComponent},
+    { path: 'garagem/alterar/:id', component: AlterarGaragemComponent},
+    { path: 'garagem/detalhar/:id', component: DetalharGaragemComponent},
     // { path: '', loadChildren: './layout/home/home.module#HomeModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'cliente', loadChildren: './cliente/cliente.module#ClienteModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]},
     // { path: 'cliente/incluir', loadChildren: './cliente/incluir/incluir.module#IncluirModule',canLoad:[LoggedInGuard],canActivate:[LoggedInGuard]}, 

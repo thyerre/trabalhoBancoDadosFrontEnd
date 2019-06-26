@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   navigateTo: string
   img:string = 'assets/img/bg-img/';
   erro:string
+  cria:boolean = false
+
   constructor(private fb: FormBuilder,
     private loginService: LoginService,
     private notificationService: NotificationService,
@@ -36,6 +38,12 @@ export class LoginComponent implements OnInit {
     this.img += this.rundImg(1 , 11)+".jpg";
     // console.log(this.img)
   }
+  criar(){
+    this.cria = true;
+  }
+  logar(){
+    this.cria = false;
+  }
   login() {
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe(user => {
@@ -51,6 +59,22 @@ export class LoginComponent implements OnInit {
           // this.router.navigate([atob(this.navigateTo)])
         })
   }
+  criarLogin() {
+    this.loginService.criarLogin(this.loginForm.value.email, this.loginForm.value.password)
+      .subscribe(user => {
+        console.log(user)//httpErrorResponse
+          this.erro = user;
+          // if(user.id_login){
+            // }
+
+          //atob é para decodificar 
+          
+          // window.location.replace(atob(this.navigateTo))
+          // window.location.reload();
+          // this.router.navigate([atob(this.navigateTo)])
+        })
+  }
+
 
   rundImg(min = 1, max = 11) {
     min = Math.ceil(min);

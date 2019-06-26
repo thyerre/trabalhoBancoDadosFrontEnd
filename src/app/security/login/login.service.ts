@@ -51,6 +51,30 @@ export class LoginService {
         `, { usuario: email, senha: password })
             .pipe(
                 tap(user => {
+                    console.log(user);
+                    if(user[0].id_login > 0){
+                        localStorage.setItem("token",user.id_login);
+                        this.router.navigate(['/dashboard']);
+                    }else{
+                        return user;
+                    }
+
+                    // localStorage.setItem('user', btoa(JSON.stringify(user.pessoa)));
+                    // let userString = JSON.stringify(user.pessoa);
+                    // let encrypt = btoa(userString);
+                    // let myencrypt = this.helper.encrypt(encrypt);
+                    // let encriptografado = this.helper.encrypt(userString);
+                    // console.log(myencrypt);
+                    // localStorage.setItem('user', myencrypt);
+                    // this.user = user
+                })
+            )
+    }
+    criarLogin(email: string, password: string): Observable<any> {
+        return this.http.post<any>(`${API}/v1/login/criar
+        `, { usuario: email, senha: password })
+            .pipe(
+                tap(user => {
                     console.log(user[0].id_login);
                     if(user[0].id_login > 0){
                         localStorage.setItem("token",user.id_login);

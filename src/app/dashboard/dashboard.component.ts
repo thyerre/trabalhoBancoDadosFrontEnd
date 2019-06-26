@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
     this.searchForm = this.fb.group({
       search: this.fb.control(''), 
     })
-    this.getClientes();
+    // this.getClientes();
 
   }
 

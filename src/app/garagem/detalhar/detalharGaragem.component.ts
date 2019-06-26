@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { GaragemService } from '../garagem.service';
-import { API_PATH_IMG } from './../../app.api'
+import { API_PATH_IMG } from '../../app.api'
 @Component({
   selector: 'app-detalhar',
-  templateUrl: './detalhar.component.html',
-  styleUrls: ['./detalhar.component.css']
+  templateUrl: './detalharGaragem.component.html',
+  styleUrls: ['./detalharGaragem.component.css']
 })
-export class DetalharComponent implements OnInit {
-  fornecedor: any;
+export class DetalharGaragemComponent implements OnInit {
+  garagem: any;
   loader: boolean = true
 
   constructor(private garagemService: GaragemService, private router: ActivatedRoute) { }
@@ -17,8 +17,8 @@ export class DetalharComponent implements OnInit {
     this.getCliente();
   }
   getCliente() {
-    this.garagemService.produtoById(this.router.snapshot.params['id']).subscribe(fornecedor => {
-      this.fornecedor = fornecedor
+    this.garagemService.produtoById(this.router.snapshot.params['id']).subscribe(garagem => {
+      this.garagem = garagem
       
       this.loader = false
     });

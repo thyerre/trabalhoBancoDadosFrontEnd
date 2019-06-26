@@ -6,10 +6,10 @@ import { API_PATH_IMG } from './../../app.api'
 
 @Component({
   selector: 'app-alterar',
-  templateUrl: './alterar.component.html',
-  styleUrls: ['./alterar.component.css']
+  templateUrl: './alterarGaragem.component.html',
+  styleUrls: ['./alterarGaragem.component.css']
 })
-export class AlterarComponent implements OnInit {
+export class AlterarGaragemComponent implements OnInit {
   fornecedor: any;
   form: FormGroup;
   img: string = 'assets/img/user/padrao.png';

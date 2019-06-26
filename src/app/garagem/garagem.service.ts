@@ -20,17 +20,25 @@ export class GaragemService {
     private router: Router
   ) { }
 
-  getProdutos(search?: string): Observable<any[]> {
+  getGaragens(search?: string): Observable<any[]> {
     
-    return this.http.get <any[]>(`${API}/garagem`)
+    return this.http.get <any[]>(`${API}/v1/garagem`)
   }
 
   produtoById(id: string): Observable<any> {
     return this.http.get<any>(`${API}/geragem/${id}`)
 
   }
+  saveGaragem(form) {
+    return this.http.post<any>(`${API}/v1/garagem`, form)
+    .pipe(
+      tap(user => {
+
+      })
+    )
+  }
   save(form) {
-    return this.http.post<any>(`${API}/geragem`, form)
+    return this.http.post<any>(`${API}/garagem`, form)
     .pipe(
       tap(user => {
 

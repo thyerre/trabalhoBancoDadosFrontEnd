@@ -18,14 +18,18 @@ import { LoginComponent } from './security/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GaragemComponent } from './garagem/garagem.component';
 import { IncluirGaragemComponent } from './garagem/incluir/IncluirGaragem.component';
-
+import { AlterarGaragemComponent } from './garagem/alterar/alterarGaragem.component';
+import { DetalharGaragemComponent } from './garagem/detalhar/detalharGaragem.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     LoginComponent,
     GaragemComponent,
-    IncluirGaragemComponent
+    IncluirGaragemComponent,
+    AlterarGaragemComponent,
+    DetalharGaragemComponent
+
 
   ],
   imports: [

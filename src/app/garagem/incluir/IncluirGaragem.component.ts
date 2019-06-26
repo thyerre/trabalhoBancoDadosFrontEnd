@@ -9,7 +9,7 @@ import { GaragemService } from '../garagem.service';
   styleUrls: ['./IncluirGaragem.component.css']
 })
 export class IncluirGaragemComponent implements OnInit {
-  fornecedor: any;
+  endereco: FormGroup;
   form: FormGroup
   loader: boolean = true
 
@@ -22,24 +22,33 @@ export class IncluirGaragemComponent implements OnInit {
 
   initializeFormEmpty() {
     this.form = this.formBuilder.group({
-      id: this.formBuilder.control(''),
-      endereco: this.formBuilder.control('', [Validators.required]),
-      razao_social: this.formBuilder.control('', [Validators.required]),
-      nome_contato: this.formBuilder.control('',),
-      pais: this.formBuilder.control(''),
-      ins_est: this.formBuilder.control(''),
-      nome_fantasia: this.formBuilder.control(''),
-      cnpj: this.formBuilder.control(''),
-      observacao: this.formBuilder.control('')
+      logradouro: this.formBuilder.control(''),
+      quadra: this.formBuilder.control(''),
+      lote: this.formBuilder.control(''),
+      num_imovel: this.formBuilder.control('',),
+      bairo: this.formBuilder.control(''),
+      cidade: this.formBuilder.control(''),
+      uf: this.formBuilder.control(''),
+      cep: this.formBuilder.control(''),
+      nome_garagem: this.formBuilder.control('')
+    })
+    this.endereco = this.formBuilder.group({
+      logradouro: this.formBuilder.control(''),
+      quadra: this.formBuilder.control(''),
+      lote: this.formBuilder.control(''),
+      num_imovel: this.formBuilder.control('',),
+      bairo: this.formBuilder.control(''),
+      cidade: this.formBuilder.control(''),
+      uf: this.formBuilder.control(''),
+      cep: this.formBuilder.control('')
     })
   }
 
   save(form) {
-    this.garagemService.save(form)
+ 
+    this.garagemService.saveGaragem(form)
       .subscribe(data => {
-        this.garagemService.notify(data.response);
-        this.garagemService.goTo()
-
-      });
+        console.log(data)
+    });
   }
 }

@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./garagem.component.css']
 })
 export class GaragemComponent implements OnInit {
-fornecedors: any[];
+garagens: any[];
 total: number = 0;
 searchForm: FormGroup
 searchControl: FormControl
@@ -22,16 +22,20 @@ itensPorPagina = 10;
 
   constructor(private garagemService: GaragemService, private fb: FormBuilder, private notificationService: NotificationService) { }
 
+
   ngOnInit() {
     this.searchControl = this.fb.control('')
     this.searchForm = this.fb.group({
       searchControl: this.searchControl
     })
+  
+    this.getGaragem();
 
   }
-  InativarProduto() {
-    if (confirm('Você tem certeza que deseja inativar o Fornecedor ' )) {
-      this.loader = true
-          }
+  getGaragem(){
+    this.garagemService.getGaragens()
+      .subscribe(data => {
+        this.garagens = data;
+      });
   }
 }
