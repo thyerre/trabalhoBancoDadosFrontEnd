@@ -1,0 +1,69 @@
+<div class='row'>
+  <div class='col-md-12'>
+    <div class='card'>
+      <div class='card-header card-header-primary'>
+        <p class='card-category'>Detalhar</p>
+        <h4 class='card-title'>Fornecedor</h4>
+      </div>
+      <div class='card-body'>
+        <div class='box-body'>
+          <div class='row'>
+            <div class='col-md-12'>
+              <div class="row">
+                <div class='form-group is-empty col-md-3 detalharLeft'>
+                  <label for='nome_fantasia'>Nome fantasia</label>
+                  <p>{{fornecedor?.nome_fantasia}}</p>
+                </div>
+                <div class='form-group is-empty col-md-3 detalharLeft'>
+                  <label for='cnpj'>CNPJ</label>
+                  <p>{{fornecedor?.cnpj}}</p>
+                </div>
+                <div class='form-group is-empty col-md-3 detalharLeft'>
+                  <label for='razao_social'>Razão social</label>
+                  <p>{{fornecedor?.razao_social}}</p>
+                </div>
+                <!-- <div class='form-group is-empty col-md-3 detalharLeft'>
+                    <label for='bo_ativo'>Ativo/Inativo</label>
+                    <p [class.ativoLeft]="fornecedor.bo_ativo" [class.inativoLeft]="!fornecedor.bo_ativo">{{fornecedor?.bo_ativo |
+                      BooleanMessage :'boativo' }}</p>
+                  </div> -->
+                <div class='form-group is-empty col-md-3 detalharLeft'>
+                  <label for='telefone'>Telefone</label>
+                  <p>{{fornecedor?.telefone}}</p>
+                </div>
+                <div class='form-group is-empty col-md-3 detalharLeft'>
+                  <label for='pessoa_contato'>Pessoa de contato</label>
+                  <p>{{fornecedor?.nome_contato}}</p>
+                </div>
+                <!-- <div class='form-group is-empty col-md-3 detalharLeft'>
+                  <label for='pessoa_referencia'>Valor de Venda</label>
+                  <p>{{fornecedor?.vl_venda | currency:'BRL':true}}</p>
+                </div> -->
+                <!-- <div class='form-group is-empty col-md-3 detalharLeft'>
+                  <label for='pessoa_referencia'>Valor de Custo</label>
+                  <p>{{fornecedor?.vl_custo | currency:'BRL':true}}</p>
+                </div> -->
+                <div class='form-group is-empty col-md-3 detalharLeft'>
+                    <label for='ins_est'>Pais</label>
+                    <p>{{fornecedor?.pais}}</p>
+                  </div>
+                <div class='form-group is-empty col-md-3 detalharLeft'>
+                  <label for='ins_est'>Inscrição estadual</label>
+                  <p>{{fornecedor?.ins_est}}</p>
+                </div>
+                <div class='form-group is-empty col-md-6 detalharLeft'>
+                  <label for='endereco'>Endereço</label>
+                  <p>{{fornecedor?.endereco}}</p>
+                </div>
+                <div class='form-group is-empty col-md-6 detalharLeft'>
+                  <label for='endereco'>Observação</label>
+                  <p>{{fornecedor?.observacao}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='col-md-2'></div>
+  </div>

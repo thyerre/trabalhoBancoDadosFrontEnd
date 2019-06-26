@@ -15,11 +15,9 @@ export class AppComponent implements OnInit {
   zoom: number = 15;
 
   isLogged = false;
-  
-  mostrarMenu: boolean = false;
-  constructor(private loginService:LoginService,private router:Router){}
-  
-  ngOnInit(){
+  mostrarMenu: false;
+  constructor(private loginService: LoginService, private router: Router) {}
+  ngOnInit() {
     //this.router.navigate(['/login']);
     this.loginService.mostrarMenu.subscribe(
       mostrarMenu => this.mostrarMenu = mostrarMenu
