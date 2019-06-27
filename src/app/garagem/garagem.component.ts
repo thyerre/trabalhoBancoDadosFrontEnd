@@ -38,4 +38,11 @@ itensPorPagina = 10;
         this.garagens = data;
       });
   }
+  excluir(form){
+    this.garagemService.excluir(form.id_garagem)
+      .subscribe(data => {
+        this.garagens.splice(this.garagens.indexOf(form), 1)
+      });
+
+  }
 }

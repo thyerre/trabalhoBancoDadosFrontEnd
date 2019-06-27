@@ -14,11 +14,12 @@ export class DetalharGaragemComponent implements OnInit {
   constructor(private garagemService: GaragemService, private router: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getCliente();
+    this.getGaragem();
   }
-  getCliente() {
-    this.garagemService.produtoById(this.router.snapshot.params['id']).subscribe(garagem => {
-      this.garagem = garagem
+  getGaragem() {
+    this.garagemService.garagemById(this.router.snapshot.params['id']).subscribe(garagem => {
+      this.garagem = garagem[0]
+      console.log(garagem)
       
       this.loader = false
     });

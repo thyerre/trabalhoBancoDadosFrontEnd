@@ -21,18 +21,16 @@ export class DashboardComponent implements OnInit {
   page: number = 1;
   itensPorPagina = 10;
 
+  texto: string = 'Wenceslau Braz - Cuidado com as cargas';
+  lat: number = -23.8779431;
+  lng: number = -49.8046873;
+  zoom: number = 15;
+
   constructor(private dashboardService: DashboardService, private fb: FormBuilder, private notificationService: NotificationService) { }
 
   ngOnInit() {
     $("body").removeClass("sidebar-collapse");
     $("header").show();
-    this.searchControl = this.fb.control('')
-    this.searchForm = this.fb.group({
-      searchControl: this.searchControl
-    })
-    this.searchForm = this.fb.group({
-      search: this.fb.control(''), 
-    })
     // this.getClientes();
 
   }

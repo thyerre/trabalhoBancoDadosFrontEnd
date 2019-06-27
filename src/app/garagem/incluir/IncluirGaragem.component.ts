@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { GaragemService } from '../garagem.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-IncluirGaragem',
@@ -14,7 +15,7 @@ export class IncluirGaragemComponent implements OnInit {
   loader: boolean = true
 
 
-  constructor(private garagemService: GaragemService, private formBuilder: FormBuilder) { }
+  constructor(private garagemService: GaragemService, private formBuilder: FormBuilder,private router: Router) { }
 
   ngOnInit() {
     this.initializeFormEmpty();
@@ -48,7 +49,9 @@ export class IncluirGaragemComponent implements OnInit {
  
     this.garagemService.saveGaragem(form)
       .subscribe(data => {
-        console.log(data)
+        if(data){
+          this.router.navigate(['/garagem']);
+        }
     });
   }
 }

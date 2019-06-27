@@ -10,7 +10,7 @@ import { API_PATH_IMG } from './../../app.api'
   styleUrls: ['./alterarGaragem.component.css']
 })
 export class AlterarGaragemComponent implements OnInit {
-  fornecedor: any;
+  garagem: any;
   form: FormGroup;
   img: string = 'assets/img/user/padrao.png';
   loader: boolean = true;
@@ -23,48 +23,47 @@ export class AlterarGaragemComponent implements OnInit {
     this.getFornecedor();
   }
   getFornecedor() {
-    this.garagemService.produtoById(this.router.snapshot.params['id']).subscribe(fornecedor => {
-      this.fornecedor = fornecedor
-      this.initializeForm(this.fornecedor)
+    this.garagemService.garagemById(this.router.snapshot.params['id']).subscribe(garagem => {
+      this.garagem = garagem[0]
+      console.log(garagem)
+      this.initializeForm(this.garagem)
       this.loader = false
     });
   }
 
-  initializeForm(fornecedor) {
+  initializeForm(garagem) {
     this.form = this.formBuilder.group({
-      id: this.formBuilder.control(fornecedor.id,[Validators.required]),
-      endereco: this.formBuilder.control(fornecedor.endereco, [Validators.required]),
-      razao_social: this.formBuilder.control(fornecedor.razao_social, [Validators.required]),
-      nome_contato: this.formBuilder.control(fornecedor.nome_contato,[Validators.required]),
-      pais: this.formBuilder.control(fornecedor.pais),
-      ins_est: this.formBuilder.control(fornecedor.ins_est),
-      nome_fantasia: this.formBuilder.control(fornecedor.nome_fantasia,[Validators.required]),
-      cnpj: this.formBuilder.control(fornecedor.cnpj,[Validators.required]),
-      observacao: this.formBuilder.control(fornecedor.observacao),
-      telefone: this.formBuilder.control(fornecedor.telefone)
+      id: this.formBuilder.control(garagem.id_garagem),
+      nome_garagem: this.formBuilder.control(garagem.nome_garagem),
+      logradouro: this.formBuilder.control(garagem.logradouro),
+      quadra: this.formBuilder.control(garagem.quadra),
+      lote: this.formBuilder.control(garagem.lote),
+      num_imovel: this.formBuilder.control(garagem.num_imovel),
+      bairo: this.formBuilder.control(garagem.bairo),
+      cidade: this.formBuilder.control(garagem.cidade),
+      uf: this.formBuilder.control(garagem.uf),
+      cep: this.formBuilder.control(garagem.cep)
     })
     
   }
   initializeFormEmpty() {
     this.form = this.formBuilder.group({
       id: this.formBuilder.control(''),
-      endereco: this.formBuilder.control('', [Validators.required]),
-      razao_social: this.formBuilder.control('', [Validators.required]),
-      nome_contato: this.formBuilder.control('',),
-      pais: this.formBuilder.control(''),
-      ins_est: this.formBuilder.control(''),
-      nome_fantasia: this.formBuilder.control(''),
-      cnpj: this.formBuilder.control(''),
-      observacao: this.formBuilder.control(''),
-      telefone: this.formBuilder.control("")
+      nome_garagem: this.formBuilder.control(''),
+      logradouro: this.formBuilder.control(''),
+      quadra: this.formBuilder.control(''),
+      lote: this.formBuilder.control(''),
+      num_imovel: this.formBuilder.control('',),
+      bairo: this.formBuilder.control(''),
+      cidade: this.formBuilder.control(''),
+      uf: this.formBuilder.control(''),
+      cep: this.formBuilder.control('')
     })
   }
-  
 
   update(form) {
     this.garagemService.update(form, form.id)
       .subscribe(data => {
-        this.garagemService.notify(data['response']);
         this.garagemService.goTo()
       });
     }

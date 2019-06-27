@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core' 
+import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
-import {tap,filter} from 'rxjs/operators'
+import { tap, filter } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http'
-import { Router,NavigationEnd} from '@angular/router'
+import { Router, NavigationEnd } from '@angular/router'
 
 
 import { NotificationService } from '../shared/messages/notification.service';
@@ -21,43 +21,42 @@ export class GaragemService {
   ) { }
 
   getGaragens(search?: string): Observable<any[]> {
-    
-    return this.http.get <any[]>(`${API}/v1/garagem`)
+
+    return this.http.get<any[]>(`${API}/v1/garagem`)
   }
 
-  produtoById(id: string): Observable<any> {
-    return this.http.get<any>(`${API}/geragem/${id}`)
+  garagemById(id: string): Observable<any> {
+    return this.http.get<any>(`${API}/v1/garagem/${id}`)
 
   }
   saveGaragem(form) {
     return this.http.post<any>(`${API}/v1/garagem`, form)
-    .pipe(
-      tap(user => {
+      .pipe(
+        tap(user => {
 
-      })
-    )
+        })
+      )
   }
   save(form) {
     return this.http.post<any>(`${API}/garagem`, form)
-    .pipe(
-      tap(user => {
+      .pipe(
+        tap(user => {
 
-      })
-    )
+        })
+      )
   }
-  update(form,id) {
-    console.log(form)
-    return this.http.put(`${API}/geragem/${id}`, form)
-    .pipe(
-      tap(user => {
-      })
-    )
+  update(form, id) {
+    return this.http.put(`${API}/v1/garagem/${id}`, form)
+      .pipe(
+        tap(user => {
+        })
+      )
   }
-  inativar(id: string) {
-    return this.http.delete(`${API}/geragem/${id}`)
+  excluir(id: string) {
+    return this.http.delete(`${API}/v1/garagem/${id}`)
 
   }
-  goTo(path: string = "geragem") {
+  goTo(path: string = "garagem") {
     this.router.navigate([`/${path}`])
   }
   notify(msg) {
