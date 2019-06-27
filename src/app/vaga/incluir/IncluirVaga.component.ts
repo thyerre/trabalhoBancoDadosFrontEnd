@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { VagaService } from './../vaga.service';
+import { GaragemService } from './../../garagem/garagem.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-incluir',
@@ -12,26 +14,27 @@ export class IncluirVagaComponent implements OnInit {
   fornecedor: any;
   form: FormGroup;
   loader: true;
+  garagem:any
+  garagens:any
 
 
-  constructor(private vagaService: VagaService, private formBuilder: FormBuilder) { }
+  constructor(private vagaService: VagaService,private garagemService: GaragemService,private router: Router, private formBuilder: FormBuilder) { }
+  
 
   ngOnInit() {
     this.initializeFormEmpty();
+    this.getGaragem();
   }
-
+  // <!-- altura_garagem|descricao|id_garagem|largura_garagem|quantidade_vaga|valor| -->
   initializeFormEmpty() {
     this.form = this.formBuilder.group({
-      id: this.formBuilder.control(''),
-      endereco: this.formBuilder.control('', [Validators.required]),
-      razao_social: this.formBuilder.control('', [Validators.required]),
-      nome_contato: this.formBuilder.control(''),
-      pais: this.formBuilder.control(''),
-      ins_est: this.formBuilder.control(''),
-      nome_fantasia: this.formBuilder.control(''),
-      cnpj: this.formBuilder.control(''),
-      observacao: this.formBuilder.control('')
-    });
+      altura_garagem: this.formBuilder.control(''),
+      descricao: this.formBuilder.control(''),
+      largura_garagem: this.formBuilder.control(''),
+      id_garagem: this.formBuilder.control(this.garagem),
+      quantidade_vaga: this.formBuilder.control(''),
+      valor: this.formBuilder.control('')
+    })
   }
 
   save(form) {
@@ -39,6 +42,18 @@ export class IncluirVagaComponent implements OnInit {
       .subscribe(data => {
         this.vagaService.notify(data.response);
         this.loader = true;
+        if(data){
+          this.router.navigate(['/garagem']);
+        }
       });
+  }
+  getGaragem(){
+    this.garagemService.getGaragens()
+      .subscribe(data => {
+        this.garagens = data;
+      });
+  }
+  addGaragem(id) {
+    this.garagem = id;
   }
 }

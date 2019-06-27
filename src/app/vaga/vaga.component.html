@@ -3,48 +3,46 @@
     <div class='col-md-12'>
       <div class='card'>
         <div class='card-header card-header-primary'>
-          <h4 class='card-title '>vaga </h4>
-          <p class='card-category'> Para alterar basta mudar os valores na linhas</p>
-          <div class='add' routerLink='/vaga/incluir'> <i class='material-icons add-icon' style='font-size:5em'>
-              add_circle </i> </div>
+          <h4 class='card-title '>Vaga </h4>
+          <div class='add' routerLink='/vaga/incluir'> <img src="https://img.icons8.com/pastel-glyph/64/000000/plus.png"> </div>
         </div>
         <div class='card-body'>
           <div class='table-responsive'>
             <table class='table'>
               <thead class=' text-primary'>
                 <tr>
-                  <th><b>Identificação</b></th>
-                  <th><b>Razão social</b></th>
-                  <th><b>CNPJ</b></th>
-                  <th><b>Nome fantasia</b></th>
-                  <th><b>Ativo/Inativo</b></th>
+                  <!-- altura_garagem|descricao|id_garagem|largura_garagem|quantidade_vaga|valor| -->
+                  <th><b>N°</b></th>
+                  <th><b>Altura</b></th>
+                  <th><b>Largura</b></th>
+                  <th><b>Descrição</b></th>
+                  <th><b>Garagem</b></th>
+                  <th><b>Quantidade</b></th>
                   <td width='90'><b>Opções</b></td>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor='let vaga of vagas '>
-                  <td>Nº {{vaga?.id}}</td>
-                  <td> <input (change)="update(vaga)" type='text' #razao_social [(ngModel)]='vaga.razao_social'class='inputGrid' value="{{vaga?.razao_social}}"></td>
-                  <td> <input (change)="update(vaga)" type='text' #cnpj [(ngModel)]='vaga.cnpj'class='inputGrid' value="{{vaga?.cnpj}}"></td>
-                  <td> <input (change)="update(vaga)" type='text' #nome_fantasia [(ngModel)]='vaga.nome_fantasia'class='inputGrid' value="{{vaga?.nome_fantasia}}"></td>
-                  <td> <h6 [class.ativo]="vaga.bo_ativo" [class.inativo]="!vaga.bo_ativo"> {{vaga?.bo_ativo |
-                      BooleanMessage :'boativo' }}</h6> </td>
+                  <td>Nº {{vaga?.id_vaga}}</td>
+                  <td> {{vaga?.altura_garagem}}</td>
+                  <td> {{vaga?.largura_garagem}}</td>
+                  <td> {{vaga?.descricao}}</td>
+                  <td> {{vaga?.nome_garagem}}</td>
+                  <td>{{vaga?.quantidade_vaga}}</td>
                   <td>
                     <i style='padding-right: 5px;cursor: pointer' class='fa fa-search' aria-hidden='true' routerLink='/vaga/detalhar/{{vaga?.id}}'></i>
                     <i style='padding-right: 5px;cursor: pointer' class='fa fa-pencil-square-o' aria-hidden='true'
                       routerLink='/vaga/alterar/{{vaga?.id}}'></i>
-                    <i style='padding-right: 5px;cursor: pointer' class='fa fa-minus-square' aria-hidden='true' (click)='InativarProduto(vaga)'></i>
+                    <i style='padding-right: 5px;cursor: pointer' class='fa fa-minus-square' aria-hidden='true' (click)='excluir(vaga)'></i>
 
                   </td>
                 </tr>
               </tbody>
-
             </table>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 

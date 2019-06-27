@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./vaga.component.css']
 })
 export class VagaComponent implements OnInit {
-fornecedors: any[];
+vagas: any[];
 total: 0;
 searchForm: FormGroup;
 searchControl: FormControl;
@@ -23,15 +23,26 @@ itensPorPagina = 10;
   constructor(private vagaService: VagaService, private fb: FormBuilder, private notificationService: NotificationService) { }
 
   ngOnInit() {
-    this.searchControl = this.fb.control('');
-    this.searchForm = this.fb.group({
-      searchControl: this.searchControl
-    });
+    this.getVagas();
 
   }
+  getVagas(){
+    this.vagaService.getVagas()
+      .subscribe(data => {
+        this.vagas = data;
+      });
+  }
+
   InativarProduto() {
     if (confirm('Você tem certeza que deseja inativar o Fornecedor ' )) {
       this.loader = true;
           }
+  }
+  excluir(form){
+    this.vagaService.excluir(form.id_vaga)
+      .subscribe(data => {
+        this.vagas.splice(this.vagas.indexOf(form), 1)
+      });
+
   }
 }

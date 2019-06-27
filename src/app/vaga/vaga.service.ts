@@ -20,9 +20,9 @@ export class VagaService {
     private router: Router
   ) { }
 
-  getProdutos(search?: string): Observable<any[]> {
+  getVagas(search?: string): Observable<any[]> {
 
-    return this.http.get <any[]>(`${API}/vaga`);
+    return this.http.get <any[]>(`${API}/v1/vaga`);
   }
 
   produtoById(id: string): Observable<any> {
@@ -30,7 +30,8 @@ export class VagaService {
 
   }
   save(form) {
-    return this.http.post<any>(`${API}/vaga`, form)
+    console.log(form)
+    return this.http.post<any>(`${API}/v1/vaga`, form)
     .pipe(
       tap(user => {
 
@@ -45,8 +46,8 @@ export class VagaService {
       })
     );
   }
-  inativar(id: string) {
-    return this.http.delete(`${API}/vaga/${id}`);
+  excluir(id: string) {
+    return this.http.delete(`${API}/v1/vaga/${id}`)
 
   }
   goTo(path: string) {
