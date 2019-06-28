@@ -15,16 +15,16 @@ import { Observable } from 'rxjs';
 export class DashboardComponent implements OnInit {
   clientes: any[];
   total: number = 0;
-  searchForm: FormGroup
-  searchControl: FormControl
+  searchForm: FormGroup;
+  searchControl: FormControl;
   loader: boolean = true;
   page: number = 1;
   itensPorPagina = 10;
 
-  texto: string = 'Wenceslau Braz - Cuidado com as cargas';
-  lat: number = -23.8779431;
-  lng: number = -49.8046873;
-  zoom: number = 15;
+  texto = 'Santa Helena de Goiás';
+  lat = -17.8260154;
+  lng = -50.6083592;
+  zoom = 15;
 
   constructor(private dashboardService: DashboardService, private fb: FormBuilder, private notificationService: NotificationService) { }
 
@@ -37,38 +37,38 @@ export class DashboardComponent implements OnInit {
 
   getClientes() {
     this.dashboardService.getClientes().subscribe(clientes => {
-      this.clientes = clientes
-      this.loader = false
+      this.clientes = clientes;
+      this.loader = false;
     });
   }
   getClientesSeach(form) {
     this.dashboardService.getClientes().subscribe(clientes => {
-      this.clientes = clientes
-      this.loader = false
+      this.clientes = clientes;
+      this.loader = false;
     });
   }
   search(form){
     this.dashboardService.search(form).subscribe(clientes =>{
-      this.clientes = clientes
-      this.loader = false
+      this.clientes = clientes;
+      this.loader = false;
     });
   }
   clearSearch(){
     this.searchForm = this.fb.group({
       search: this.fb.control(''), 
     })
-    this.getClientes()
+    this.getClientes();
   }
 
   InativarCliente(Cliente) {
     if (confirm('Você tem certeza que deseja remover a Cliente ')) {
-      this.loader = true
+      this.loader = true;
       this.dashboardService.inativar(Cliente.id).subscribe((data) => {
         if (data['success']) {
           this.clientes.splice(this.clientes.indexOf(Cliente), 1)
           this.notificationService.notify(`Você removeu a Cliente`)
         }
-        this.loader = false
+        this.loader = false;
       });
     }
   }
