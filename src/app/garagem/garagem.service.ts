@@ -56,6 +56,11 @@ export class GaragemService {
     return this.http.delete(`${API}/v1/garagem/${id}`)
 
   }
+
+  getInfo(): Observable<any[]> {
+    return this.http.get<any[]>(`${API}/v1/garagem/info`)
+  }
+
   goTo(path: string = "garagem") {
     this.router.navigate([`/${path}`])
   }

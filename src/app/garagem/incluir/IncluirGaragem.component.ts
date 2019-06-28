@@ -31,17 +31,9 @@ export class IncluirGaragemComponent implements OnInit {
       cidade: this.formBuilder.control(''),
       uf: this.formBuilder.control(''),
       cep: this.formBuilder.control(''),
+      lat: this.formBuilder.control(''),
+      log: this.formBuilder.control(''),
       nome_garagem: this.formBuilder.control('')
-    })
-    this.endereco = this.formBuilder.group({
-      logradouro: this.formBuilder.control(''),
-      quadra: this.formBuilder.control(''),
-      lote: this.formBuilder.control(''),
-      num_imovel: this.formBuilder.control('',),
-      bairo: this.formBuilder.control(''),
-      cidade: this.formBuilder.control(''),
-      uf: this.formBuilder.control(''),
-      cep: this.formBuilder.control('')
     })
   }
 

@@ -6,6 +6,7 @@ declare var $: any;
 
 
 import { Observable } from 'rxjs';
+import { GaragemService } from '../garagem/garagem.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  clientes: any[];
+  markers: any[];
   total: number = 0;
   searchForm: FormGroup
   searchControl: FormControl
@@ -22,67 +23,30 @@ export class DashboardComponent implements OnInit {
   itensPorPagina = 10;
 
   texto: string = 'Wenceslau Braz - Cuidado com as cargas';
-  lat: number = -23.8779431;
-  lng: number = -49.8046873;
-  zoom: number = 15;
+  lat = 43.879078;
+  lng = -103.4615581;
+  // markers = [
+  //   { lat: 22.33159, lng: 105.63233},
+  //   { lat: 7.92658, lng: -12.05228},
+  //   { lat: 48.75606, lng: -118.859},
+  //   { lat: 5.19334, lng: -67.03352},
+  //   { lat: 12.09407, lng: 26.31618},
+  //   // { lat: 47.92393, lng: 78.58339}
+  // ];
 
-  constructor(private dashboardService: DashboardService, private fb: FormBuilder, private notificationService: NotificationService) { }
+  constructor(private garagemService: GaragemService,private dashboardService: DashboardService, private fb: FormBuilder, private notificationService: NotificationService) { }
 
   ngOnInit() {
     $("body").removeClass("sidebar-collapse");
     $("header").show();
-    // this.getClientes();
+    this.getGaragem();
 
   }
-
-  getClientes() {
-    this.dashboardService.getClientes().subscribe(clientes => {
-      this.clientes = clientes
-      this.loader = false
-    });
-  }
-  getClientesSeach(form) {
-    this.dashboardService.getClientes().subscribe(clientes => {
-      this.clientes = clientes
-      this.loader = false
-    });
-  }
-  search(form){
-    this.dashboardService.search(form).subscribe(clientes =>{
-      this.clientes = clientes
-      this.loader = false
-    });
-  }
-  clearSearch(){
-    this.searchForm = this.fb.group({
-      search: this.fb.control(''), 
-    })
-    this.getClientes()
-  }
-
-  InativarCliente(Cliente) {
-    if (confirm('Você tem certeza que deseja remover a Cliente ')) {
-      this.loader = true
-      this.dashboardService.inativar(Cliente.id).subscribe((data) => {
-        if (data['success']) {
-          this.clientes.splice(this.clientes.indexOf(Cliente), 1)
-          this.notificationService.notify(`Você removeu a Cliente`)
-        }
-        this.loader = false
-      });
-    }
-  }
-  update(form) {
-    this.dashboardService.update(form, form.id)
+  getGaragem(){
+    this.garagemService.getGaragens()
       .subscribe(data => {
-        this.dashboardService.notify(data['response']);
-      },
-        response => {
-          if (response.status === 401) {
-            this.dashboardService.notify("não foi possivel salvar");
-          }
-        },
-        () => {
-        })
+        console.log(data)
+        this.markers = data;
+      });
   }
 }

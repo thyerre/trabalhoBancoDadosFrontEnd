@@ -35,6 +35,7 @@ itensPorPagina = 10;
   getGaragem(){
     this.garagemService.getGaragens()
       .subscribe(data => {
+        console.log(data)
         this.garagens = data;
       });
   }

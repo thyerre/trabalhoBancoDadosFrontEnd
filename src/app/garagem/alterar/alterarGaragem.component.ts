@@ -41,7 +41,9 @@ export class AlterarGaragemComponent implements OnInit {
       bairo: this.formBuilder.control(garagem.bairo),
       cidade: this.formBuilder.control(garagem.cidade),
       uf: this.formBuilder.control(garagem.uf),
-      cep: this.formBuilder.control(garagem.cep)
+      cep: this.formBuilder.control(garagem.cep),
+      lat: this.formBuilder.control(garagem.lat),
+      log: this.formBuilder.control(garagem.log)
     })
     
   }
@@ -56,7 +58,9 @@ export class AlterarGaragemComponent implements OnInit {
       bairo: this.formBuilder.control(''),
       cidade: this.formBuilder.control(''),
       uf: this.formBuilder.control(''),
-      cep: this.formBuilder.control('')
+      cep: this.formBuilder.control(''),
+      lat: this.formBuilder.control(''),
+      log: this.formBuilder.control('')
     })
   }
 
