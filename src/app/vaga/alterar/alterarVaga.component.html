@@ -1,89 +1,75 @@
 <div class='row'>
-    <div class='col-md-12'>
-        <div class='card'>
+        <div class='col-md-12'>
+          <div class='card'>
             <div class='card-header card-header-primary'>
-                <p class='card-category'>Editar</p>
-                <h4 class='card-title'>Fornecedor</h4>
+              <p class='card-category'>Adicionar</p>
+              <h4 class='card-title'>Fornecedor</h4>
             </div>
             <div class='card-body'>
-                <form [formGroup]='form' novalidate>
-                    <div class='box-body'>
-                        <div class='row'>
-                            <input type='hidden' class='form-control' formControlName='id' placeholder=''>
-
-                            <div class='col-md-12'>
-                                <div class="row">
-                                    <div class='form-group is-empty col-md-4'>
-                                        <label for='nome_fantasia'>Nome Fantasia</label>
-                                        <app-input-container errorMessage='Campo obrigatório' label='nome_fantasia'>
-                                            <input class='form-control' formControlName='nome_fantasia' placeholder=''>
-                                        </app-input-container>
-                                    </div>
-                                    <div class='form-group is-empty col-md-4'>
-                                        <label for='cnpj'>CNPJ</label>
-                                        <app-input-container errorMessage='Campo obrigatório' label='cnpj'>
-                                            <input class='form-control' formControlName='cnpj' placeholder=''>
-                                        </app-input-container>
-                                    </div>
-                                    <div class='form-group is-empty col-md-4'>
-                                        <label for='razao_social'>Razão social</label>
-                                        <app-input-container errorMessage='Campo obrigatório' label='razao_social'>
-                                            <input class='form-control' formControlName='razao_social'>
-                                        </app-input-container>
-                                    </div>
-                                    <div class='form-group is-empty col-md-3'>
-                                        <label for='pais'>Pais</label>
-                                        <app-input-container errorMessage='Campo obrigatório' label='pais'>
-                                            <input class='form-control' formControlName='pais'>
-                                        </app-input-container>
-                                    </div>
-
-                                    <div class='form-group is-empty col-md-3'>
-                                        <label for='ins_est'>Inscrição estadual</label>
-                                        <app-input-container errorMessage='Campo obrigatório' label='ins_est'>
-                                            <input class='form-control' formControlName='ins_est'>
-                                        </app-input-container>
-                                    </div>
-
-                                    <div class='form-group is-empty col-md-3'>
-                                        <label for='telefone'>Telefone</label>
-                                        <app-input-container errorMessage='Campo obrigatório' label='telefone'>
-                                            <input class='form-control' formControlName='telefone'>
-                                        </app-input-container>
-                                    </div>
-
-                                    <div class='form-group is-empty col-md-3'>
-                                        <label for='nome_contato'>Pessoa de contato</label>
-                                        <app-input-container errorMessage='Campo obrigatório' label='nome_contato'>
-                                            <input class='form-control' formControlName='nome_contato'>
-                                        </app-input-container>
-                                    </div>
-
-                                    <div class='form-group is-empty col-md-6'>
-                                        <label for='endereco'>Endereço</label>
-                                        <app-input-container errorMessage='Campo obrigatório' label='endereco'>
-                                            <textarea rows="5" class='form-control' formControlName='endereco'
-                                                placeholder=''></textarea>
-                                        </app-input-container>
-                                    </div>
-                                    <div class='form-group is-empty col-md-6'>
-                                        <label for='observacao'>Observação</label>
-                                        <app-input-container errorMessage='Campo obrigatório' label='observacao'>
-                                            <textarea rows="5" class='form-control' formControlName='observacao'
-                                                placeholder=''></textarea>
-                                        </app-input-container>
-                                    </div>
-                                </div>
-                            </div>
+              <form [formGroup]='form' novalidate>
+                <div class='box-body'>
+                  <div class='row'>
+      
+                    <div class='col-md-12'>
+                      <div class="row">
+                        <!-- altura_garagem|descricao|id_garagem|largura_garagem|quantidade_vaga|valor| -->
+                        <app-input-container errorMessage='Campo obrigatório' label='id_vaga'>
+                                <input class='form-control' formControlName='id_vaga' placeholder='' type="hidden">
+                              </app-input-container>
+                        <div class='form-group is-empty col-md-4'>
+                          <label for='descricao'>Descrição</label>
+                          <app-input-container errorMessage='Campo obrigatório' label='descricao'>
+                            <input class='form-control' formControlName='descricao' placeholder=''>
+                          </app-input-container>
                         </div>
+                        <div class='form-group is-empty col-md-4'>
+                          <label for='altura_garagem'>Altura</label>
+                          <app-input-container errorMessage='Campo obrigatório' label='altura_garagem'>
+                            <input class='form-control' formControlName='altura_garagem' placeholder=''>
+                          </app-input-container>
+                        </div>
+                        <div class='form-group is-empty col-md-4'>
+                          <label for='largura_garagem'>Largura</label>
+                          <app-input-container errorMessage='Campo obrigatório' label='largura_garagem'>
+                            <input class='form-control' formControlName='largura_garagem'>
+                          </app-input-container>
+                        </div>
+                        <div class='form-group is-empty col-md-3'>
+                          <label for='pais'>Garagem</label>
+                          <app-input-container errorMessage='Campo obrigatório' label='id_garagem'>
+                            <select class='form-control'  formControlName='id_garagem' >
+                              <option *ngFor="let garagem of garagens" (click)="addGaragem(garagem?.id_garagem)"
+                                value="{{garagem?.id_garagem}}">
+                                {{garagem?.nome_garagem}}</option>
+                            </select>
+                          </app-input-container>
+                        </div>
+      
+                        <div class='form-group is-empty col-md-3'>
+                          <label for='valor'>Valor da Hora</label>
+                          <app-input-container errorMessage='Campo obrigatório' label='valor'>
+                            <input class='form-control' formControlName='valor'>
+                          </app-input-container>
+                        </div>
+      
+                        <div class='form-group is-empty col-md-3'>
+                          <label for='quantidade_vaga'>Quantidade</label>
+                          <app-input-container errorMessage='Campo obrigatório' label='quantidade_vaga'>
+                            <input class='form-control' formControlName='quantidade_vaga'>
+                          </app-input-container>
+                        </div>
+                      </div>
                     </div>
-                    <!-- /.box-body -->
-
-                    <div class='box-footer'>
-                        <button (click)='update(form.value)' [disabled]='!form.valid' class='btn btn-primary'>Salvar</button>
-                    </div>
-                </form>
+      
+                  </div>
+                </div>
+                <!-- /.box-body -->
+      
+                <div>
+                  <button (click)='update(form.value)' [disabled]='!form.valid' class='btn btn-primary'>Salvar</button>
+                </div>
+              </form>
+      
             </div>
+          </div>
         </div>
-        <div class='col-md-2'></div>
-    </div>

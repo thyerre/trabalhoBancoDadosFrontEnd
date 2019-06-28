@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { ActivatedRoute } from '@angular/router';
 import { VagaService } from '../vaga.service';
 import { API_PATH_IMG } from '../../app.api';
+import { GaragemService } from 'src/app/garagem/garagem.service';
 
 @Component({
   selector: 'app-alterar',
@@ -10,59 +11,61 @@ import { API_PATH_IMG } from '../../app.api';
   styleUrls: ['./alterarVaga.component.css']
 })
 export class AlterarVagaComponent implements OnInit {
-  fornecedor: any;
+  vaga: any;
+  garagens:any
   form: FormGroup;
   img: 'assets/img/user/padrao.png';
   selectedFile: File;
   loader: true;
 
-  constructor(private vagaService: VagaService, private formBuilder: FormBuilder, private router: ActivatedRoute) { }
+  constructor(private vagaService: VagaService,private garagemService: GaragemService, private formBuilder: FormBuilder, private router: ActivatedRoute) { }
 
   ngOnInit() {
     this.initializeFormEmpty();
-    this.getFornecedor();
+    this.getvaga();
+    this.getGaragem();
   }
-  getFornecedor() {
-    this.vagaService.produtoById(this.router.snapshot.params['id']).subscribe(fornecedor => {
-      this.fornecedor = fornecedor;
-      this.initializeForm(this.fornecedor);
+  getvaga() {
+    this.vagaService.getVagaById(this.router.snapshot.params['id']).subscribe(vaga => {
+      this.vaga = vaga[0];
+      this.initializeForm(this.vaga);
     });
   }
+  getGaragem(){
+    this.garagemService.getGaragens()
+      .subscribe(data => {
+        this.garagens = data;
+      });
+  }
 
-  initializeForm(fornecedor) {
+  initializeForm(vaga) {
     this.form = this.formBuilder.group({
-      id: this.formBuilder.control(fornecedor.id, [Validators.required]),
-      endereco: this.formBuilder.control(fornecedor.endereco, [Validators.required]),
-      razao_social: this.formBuilder.control(fornecedor.razao_social, [Validators.required]),
-      nome_contato: this.formBuilder.control(fornecedor.nome_contato, [Validators.required]),
-      pais: this.formBuilder.control(fornecedor.pais),
-      ins_est: this.formBuilder.control(fornecedor.ins_est),
-      nome_fantasia: this.formBuilder.control(fornecedor.nome_fantasia, [Validators.required]),
-      cnpj: this.formBuilder.control(fornecedor.cnpj, [Validators.required]),
-      observacao: this.formBuilder.control(fornecedor.observacao),
-      telefone: this.formBuilder.control(fornecedor.telefone)
+      id_vaga: this.formBuilder.control(vaga.id_vaga, [Validators.required]),
+      descricao: this.formBuilder.control(vaga.descricao, [Validators.required]),
+      largura_garagem: this.formBuilder.control(vaga.largura_garagem, [Validators.required]),
+      altura_garagem: this.formBuilder.control(vaga.altura_garagem, [Validators.required]),
+      id_garagem: this.formBuilder.control(vaga.id_garagem, [Validators.required]),
+      quantidade_vaga: this.formBuilder.control(vaga.quantidade_vaga),
+      valor: this.formBuilder.control(vaga.valor)
     });
 
   }
   initializeFormEmpty() {
     this.form = this.formBuilder.group({
-      id: this.formBuilder.control(''),
-      endereco: this.formBuilder.control('', [Validators.required]),
-      razao_social: this.formBuilder.control('', [Validators.required]),
-      nome_contato: this.formBuilder.control(''),
-      pais: this.formBuilder.control(''),
-      ins_est: this.formBuilder.control(''),
-      nome_fantasia: this.formBuilder.control(''),
-      cnpj: this.formBuilder.control(''),
-      observacao: this.formBuilder.control(''),
-      telefone: this.formBuilder.control('')
+      id_vaga: this.formBuilder.control('', [Validators.required]),
+      descricao: this.formBuilder.control('', [Validators.required]),
+      altura_garagem: this.formBuilder.control('', [Validators.required]),
+      largura_garagem: this.formBuilder.control('', [Validators.required]),
+      id_garagem: this.formBuilder.control('', [Validators.required]),
+      quantidade_vaga: this.formBuilder.control(''),
+      valor: this.formBuilder.control('')
     });
   }
 
   update(form) {
-    this.vagaService.update(form, form.id)
+    this.vagaService.update(form, form.id_vaga)
       .subscribe(data => {
-        this.vagaService.notify(data['response']);
+        this.garagemService.goTo('vaga')
         this.loader = true;
       });
     }

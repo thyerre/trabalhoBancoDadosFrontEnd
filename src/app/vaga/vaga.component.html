@@ -30,9 +30,9 @@
                   <td> {{vaga?.nome_garagem}}</td>
                   <td>{{vaga?.quantidade_vaga}}</td>
                   <td>
-                    <i style='padding-right: 5px;cursor: pointer' class='fa fa-search' aria-hidden='true' routerLink='/vaga/detalhar/{{vaga?.id}}'></i>
+                    <i style='padding-right: 5px;cursor: pointer' class='fa fa-search' aria-hidden='true' routerLink='/vaga/detalhar/{{vaga?.id_vaga}}'></i>
                     <i style='padding-right: 5px;cursor: pointer' class='fa fa-pencil-square-o' aria-hidden='true'
-                      routerLink='/vaga/alterar/{{vaga?.id}}'></i>
+                      routerLink='/vaga/alterar/{{vaga?.id_vaga}}'></i>
                     <i style='padding-right: 5px;cursor: pointer' class='fa fa-minus-square' aria-hidden='true' (click)='excluir(vaga)'></i>
 
                   </td>

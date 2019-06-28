@@ -40,10 +40,9 @@ export class IncluirVagaComponent implements OnInit {
   save(form) {
     this.vagaService.save(form)
       .subscribe(data => {
-        this.vagaService.notify(data.response);
         this.loader = true;
         if(data){
-          this.router.navigate(['/garagem']);
+          this.router.navigate(['/vaga']);
         }
       });
   }

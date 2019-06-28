@@ -25,7 +25,6 @@ export class AlterarGaragemComponent implements OnInit {
   getFornecedor() {
     this.garagemService.garagemById(this.router.snapshot.params['id']).subscribe(garagem => {
       this.garagem = garagem[0]
-      console.log(garagem)
       this.initializeForm(this.garagem)
       this.loader = false
     });

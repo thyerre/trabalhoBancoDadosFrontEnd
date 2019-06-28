@@ -25,8 +25,8 @@ export class VagaService {
     return this.http.get <any[]>(`${API}/v1/vaga`);
   }
 
-  produtoById(id: string): Observable<any> {
-    return this.http.get<any>(`${API}/vaga/${id}`);
+  getVagaById(id: string): Observable<any> {
+    return this.http.get<any>(`${API}/v1/vaga/${id}`);
 
   }
   save(form) {
@@ -40,7 +40,7 @@ export class VagaService {
   }
   update(form, id) {
     console.log(form);
-    return this.http.put(`${API}/vaga/${id}`, form)
+    return this.http.put(`${API}/v1/vaga/${id}`, form)
     .pipe(
       tap(user => {
       })
@@ -52,8 +52,5 @@ export class VagaService {
   }
   goTo(path: string) {
     this.router.navigate([`/${path}`]);
-  }
-  notify(msg) {
-    this.notificationService.notify(msg);
   }
 }

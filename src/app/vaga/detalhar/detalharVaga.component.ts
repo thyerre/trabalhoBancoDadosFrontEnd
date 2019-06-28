@@ -8,18 +8,18 @@ import { API_PATH_IMG } from '../../app.api';
   styleUrls: ['./detalharVaga.component.css']
 })
 export class DetalharVagaComponent implements OnInit {
-  fornecedor: any;
+  vaga: any;
   loader: true;
 
   constructor(private vagaService: VagaService, private router: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getCliente();
+    this.getVaga();
   }
-  getCliente() {
-    this.vagaService.produtoById(this.router.snapshot.params['id']).subscribe(fornecedor => {
-      this.fornecedor = fornecedor;
-
+  getVaga() {
+    this.vagaService.getVagaById(this.router.snapshot.params['id']).subscribe(vaga => {
+      this.vaga = vaga[0];
+      console.log(vaga)
       this.loader = true;
     });
   }
