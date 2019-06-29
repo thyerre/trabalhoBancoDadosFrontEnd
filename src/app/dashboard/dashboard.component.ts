@@ -16,8 +16,8 @@ import { GaragemService } from '../garagem/garagem.service';
 export class DashboardComponent implements OnInit {
   markers: any[];
   total: number = 0;
-  searchForm: FormGroup
-  searchControl: FormControl
+  searchForm: FormGroup;
+  searchControl: FormControl;
   loader: boolean = true;
   page: number = 1;
   itensPorPagina = 10;

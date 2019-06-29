@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "/var/www/html/back_sys/public/fe/",
+            "outputPath": "/var/www/html/trabalhobancodedados/trabalhoBancoDadosFrontEndPHP/public/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
